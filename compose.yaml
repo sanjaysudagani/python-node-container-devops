@@ -1,0 +1,36 @@
+name: python-node-container-devops
+
+services:
+  python-api:
+    build:
+      context: ./python-service
+    image: local/python-http-service:dev
+    init: true
+    ports:
+      - "127.0.0.1:${PYTHON_PORT:-8001}:8000"
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=16m
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    pids_limit: 64
+    restart: unless-stopped
+
+  node-api:
+    build:
+      context: ./node-service
+    image: local/node-http-service:dev
+    init: true
+    ports:
+      - "127.0.0.1:${NODE_PORT:-3001}:3000"
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=16m
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    pids_limit: 64
+    restart: unless-stopped
