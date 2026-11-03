@@ -1,0 +1,16 @@
+version: 2
+updates:
+  - package-ecosystem: docker
+    directory: /python-service
+    schedule:
+      interval: weekly
+
+  - package-ecosystem: docker
+    directory: /node-service
+    schedule:
+      interval: weekly
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
