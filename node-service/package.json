@@ -1,0 +1,12 @@
+{
+  "name": "node-http-status-service",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Dependency-free Node.js HTTP health service for a container demo",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "test": "node --test"
+  }
+}
